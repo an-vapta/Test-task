@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './movieapi/navbar/Navbar'
 import Home from './movieapi/pages.jsx/Home'
 import { Routes, Route } from "react-router-dom";
@@ -7,10 +7,15 @@ import Topratedpage from './movieapi/pages.jsx/Topratedpage';
 
 
 const App = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(!open);
+  };
   return (
     <>
       <div className="container-fluid">
-        <Navbar />
+        <Navbar handleClickOpen={handleClickOpen} open={open} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/popularpage" element={<Popularpage />} />

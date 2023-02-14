@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getMovie } from '../../redux/action'
 import CardComponent from '../card/Cardcomponent'
+import { addCart } from '../../redux/action'
 
-const baseUrl = "https://api.themoviedb.org/3/movie/popular?api_key=4fa0858b3979642723766e0a1cc6c726";
 
 const Home = () => {
   const { movie } = useSelector(state => state.movieReducer);
@@ -12,16 +12,22 @@ const Home = () => {
   useEffect(() => {
     dispatch(getMovie())
   }, []);
-  
+
+  const handleClick = () => {
+    // dispatch(addCart(item));
+  }
   return (
-    <div className='container '>
-      <div className="row">
-        {/* ((text ? filter: movie)) */}
-        {movie.map((item, index) => {
-          return <CardComponent item={item} index={index} key={index} />
-        })}
+    <>
+      <div className='container '>
+        <div className="row">
+          {
+            movie.map((item, index) => {
+              return <CardComponent handleClick={handleClick} item={item} index={index} key={index} />
+            })
+          }
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

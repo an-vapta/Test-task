@@ -1,12 +1,9 @@
 import React from 'react'
 import movieicon from '../image/movieIcon.jpg'
 import { Link } from 'react-router-dom'
+import AddToCard from '../card/AddToCard'
 
-
-const Navbar = () => {
-
-
-
+const Navbar = ({ handleClickOpen, open }) => {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -28,6 +25,9 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/topratedpage">Top Rated Movie</Link>
                             </li>
+
+                            <AddToCard handleClickOpen={handleClickOpen} open={open} />
+                            {/* {<AddToCard handleClickOpen={handleClickOpen} open={open} />} */}
                         </ul>
                         <form className="d-flex">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
