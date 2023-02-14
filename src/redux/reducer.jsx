@@ -1,6 +1,5 @@
 import { GET_MOVIES, REMOVE_ITEM, ADD_CART } from './action';
 
-
 const initialState = {
     movie: [],
     cart: [],
@@ -18,10 +17,10 @@ function movieReducer(state = initialState, action) {
             return { ...state, cart: [...state.cart, action.payload] }
 
         case REMOVE_ITEM:
-            console.log(initialState.cart, "initialState.cart from remove")
+            console.log('REMOVE_REDUCER', action.payload.id, state.cart);
             return {
                 ...state,
-                cart: initialState.cart.filter((item) => item.id !== action.payload.id)
+                cart: state.cart.filter((item) => action.payload.id !== item.id)
             }
 
         default:

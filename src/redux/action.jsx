@@ -1,6 +1,5 @@
 import axios from 'axios'
 export const GET_MOVIES = 'FETCH_MOVIES';
-
 export const REMOVE_ITEM = 'REMOVE_FAVORITE_ITEM';
 export const ADD_CART = 'ADD_CART';
 
@@ -36,6 +35,7 @@ export const addCart = (movie) => {
 };
 
 export const removeCart = (movie) => {
+  console.log(movie, "movie")
   return {
     type: REMOVE_ITEM,
     payload: movie

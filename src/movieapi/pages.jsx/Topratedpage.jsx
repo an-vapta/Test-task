@@ -1,21 +1,25 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getMovie } from '../../redux/action'
+//import AddToCard from '../card/AddToCard'
+import CardComponent from '../card/Cardcomponent';
+
+
 
 const Topratedpage = () => {
-  // const data = useSelector(state => state.movieReducer)
-  const { movie } = useSelector(state => state.movieReducer);
-  const dispatch = useDispatch();
-
+  const { cart } = useSelector(state => state.movieReducer);
 
 
   useEffect(() => {
-    dispatch(getMovie())
-  }, []);
 
-  console.log(movie, "movie")
+  }, [cart])
   return (
-    <div>Topratedpage</div>
+    <div className="container-fluid">
+      <div className="row">
+        {cart.length > 0 && cart.map((item, index) => (
+          <CardComponent item={item} index={index} key={index} />
+        ))}
+      </div>
+    </div>
   )
 }
 

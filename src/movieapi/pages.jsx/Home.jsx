@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getMovie } from '../../redux/action'
 import CardComponent from '../card/Cardcomponent'
-import { addCart } from '../../redux/action'
+
 
 
 const Home = () => {
@@ -18,7 +18,6 @@ const Home = () => {
   }
   return (
     <>
-      <div className='container '>
         <div className="row">
           {
             movie.map((item, index) => {
@@ -26,7 +25,7 @@ const Home = () => {
             })
           }
         </div>
-      </div>
+
     </>
   )
 }

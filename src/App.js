@@ -15,7 +15,7 @@ const App = () => {
   return (
     <>
       <div className="container-fluid">
-        <Navbar handleClickOpen={handleClickOpen} open={open} />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/popularpage" element={<Popularpage />} />
