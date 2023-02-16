@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-//import AddToCard from '../card/AddToCard'
 import CardComponent from '../card/Cardcomponent';
 
 
 
 const Topratedpage = () => {
   const { cart } = useSelector(state => state.movieReducer);
+  const [list, setList] = useState(true)
 
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Topratedpage = () => {
     <div className="container-fluid">
       <div className="row">
         {cart.length > 0 && cart.map((item, index) => (
-          <CardComponent item={item} index={index} key={index} />
+          <CardComponent item={item} index={index} key={index} list={list} />
         ))}
       </div>
     </div>

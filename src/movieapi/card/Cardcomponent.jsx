@@ -1,16 +1,16 @@
-import React from 'react';
-import { Card, CardHeader, CardMedia,CardContent,CardActions,Avatar,Button ,Typography} from '@mui/material';
+import React, { useState } from 'react';
+import { Card, CardHeader, CardMedia, CardContent, CardActions, Avatar, Button, Typography } from '@mui/material';
 import { Delete, Favorite, Share, MoreVert } from '@mui/icons-material';
 import { red } from '@mui/material/colors';
 import { useDispatch, useSelector } from 'react-redux'
 import { addCart, removeCart } from '../../redux/action'
 
 
-const CardComponent = ({ item, index }) => {
+const CardComponent = ({ item, index, list, setList }) => {
     // const [state, setState] = useState(false);
     const imageUrl = "https://image.tmdb.org/t/p/"
     const dispatch = useDispatch();
-
+    const [liked, setLiked] = useState(false)
     const { cart } = useSelector(state => state.movieReducer);
 
     return (
@@ -43,14 +43,15 @@ const CardComponent = ({ item, index }) => {
                             {item.overview ? (item.overview.slice(0, 100)) : "......"}
                         </Typography>
                     </CardContent>
-                    <CardActions disableSpacing container spacing={2}>
-                        <Button aria-label="share" onClick={() => dispatch(addCart(item))}>
-                            <Favorite sx={{ color: red[500] }} style={{ fontSize: 30 }} />
-                        </Button>
-                        <Delete aria-label="share" style={{ fontSize: 30 }} onClick={() => dispatch(removeCart(item))} >
-                            <Share />
-                        </Delete>
-                    </CardActions>
+                    {
+                        <CardActions disableSpacing spacing={2}>
+                            <Button aria-label="share" onClick={() => dispatch(addCart(item))}>
+                                <Favorite sx={{ color: liked ? 'red' : '#bbb' }} style={{ fontSize: 30 }} />
+                            </Button>
+                            <Delete aria-label="share" style={{ fontSize: 30 }} onClick={() => dispatch(removeCart(item))} >
+                                <Share />
+                            </Delete>
+                        </CardActions>}
                 </Card>
             </div>
 
