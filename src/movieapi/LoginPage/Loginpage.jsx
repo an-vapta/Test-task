@@ -73,7 +73,7 @@ const Login = ({ isUserAuth }) => {
             })
             .catch(function (error) {
                 console.log(error);
-                setError("SomeThing Went Wrong")
+                setError("SomeThing Went Wrong plz")
             });
         console.log(signup)
     }
